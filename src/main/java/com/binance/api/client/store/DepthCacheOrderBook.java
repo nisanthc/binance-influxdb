@@ -51,6 +51,7 @@ public class DepthCacheOrderBook extends Thread {
   private static final String ASKS = "ASKS";
 
   private final String symbol;
+  private final String pair;
   private final BinanceApiRestClient restClient;
   private final BinanceApiWebSocketClient wsClient;
   private final WsCallback wsCallback = new WsCallback();
@@ -60,8 +61,9 @@ public class DepthCacheOrderBook extends Thread {
   private long eventTime = 1L;
   private volatile Closeable webSocket;
 
-  public DepthCacheOrderBook(String symbol) {
+  public DepthCacheOrderBook(String pair, String symbol) {
     this.symbol = symbol;
+    this.pair = pair;
 
     BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();
     this.wsClient = factory.newWebSocketClient();
@@ -258,23 +260,18 @@ public class DepthCacheOrderBook extends Thread {
 @Override
 public void run() {
 
-	try
-	{ 
+	try { 
 		// Displaying the thread that is running 
-		System.out.println ("Thread " + 
-			Thread.currentThread().getId() + 
-			" BTC Pair :: " +
-			symbol +
-			" is running"); 
-
+		System.out.printf("Thread %s : %s Pair :: %s is running \n", 
+							Thread.currentThread().getId(),
+							pair,
+							symbol
+							);
 	} 
-	catch (Exception e) 
-	{ 
+	catch (Exception e) { 
 		// Throwing an exception 
 		System.out.println ("Exception is caught"); 
 	} 
-	
-	
-}
+ }
 
 }
