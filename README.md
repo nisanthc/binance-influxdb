@@ -12,16 +12,16 @@ InfluxDB is a time series database designed to handle high write and query loads
    4. Run influxd (server)
    5. Run influx (client)
 
-   Note: InfluxDB server runs with the port http://127.0.0.1:8086
+   Note: InfluxDB server runs with the default port http://127.0.0.1:8086
 
 ### Grafana Tool Setup
 
 Grafana is an open source visualization tool. It allows you to query, visualize, alert on and understand your metrics no matter where they are stored. 
 
    1. Download Grafana https://dl.grafana.com/oss/release/grafana-6.2.5.windows-amd64.zip
-   2. Installation steps available in https://grafana.com/docs/installation/windows/
+   2. Installation steps available in https://grafana.com/docs/installation/windows/ (Change the port to 8888)
     
-   Note: Assume if you change the port to 8888 in #2, open url http://127.0.0.1:8888 to verify.
+   Note: Open URL http://127.0.0.1:8888 to check the grafana. 
 
 ### Integrating Grafana with InfluxDB
 
@@ -43,15 +43,15 @@ Using Grafana GUI
         3. Visualization: Format the table
         4. General: Give panel name
         5. Save the Dashboard
-   3. Repeat the above step #2 by adding new panel in the same dashboard. And in the Queries section give the below query for ASKS
+   3. Repeat the above step #2 by adding new panel in the same dashboard. And in the Queries section add the below query for ASKS
           
           SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention".$BTCPAIRS WHERE ("category" = 'ASKS') AND $timeFilter 
   
 ## Start Project
 
    1. Download or clone the project
-   2. Run the below jar file by giving pair either BTC or BNB as command line arguments.
-        java -jar target\binance-influxdb-1.0.0.jar BTC     
+   2. Run the below jar file by giving pair either BTC or BNB as command line argument.
+         java -jar target\binance-influxdb-1.0.0.jar BTC     
    3. Goto influx client and run the below query to verify the database update
          show measurements;
    4. Open Grafana and check the real time visualization.
