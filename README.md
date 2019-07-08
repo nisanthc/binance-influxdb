@@ -35,12 +35,15 @@ Using Grafana GUI
    2. Create a dashboard 
       1. Choose Table template 
       2. Queries : Add Query for BIDS table
-            """ SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention".$BTCPAIRS WHERE ("category" = 'BIDS') AND $timeFilter """
+      
+           SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention".$BTCPAIRS WHERE ("category" = 'BIDS') AND $timeFilter 
+           
       3. Visualization: Format the table
       4. General: Give panel name
       5. Save the Dashboard
    3. Repeat the above step #2 by adding new panel in the same dashboard. And in the Queries section give the below query for ASKS
-           """ SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention".$BTCPAIRS WHERE ("category" = 'ASKS') AND $timeFilter """
+          
+           SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention".$BTCPAIRS WHERE ("category" = 'ASKS') AND $timeFilter 
   
 ## Start Project
 
@@ -49,7 +52,7 @@ Using Grafana GUI
    2. Run the below java file to fetch the all BTC pairs info and store in the database
          /binance-influxdb/src/main/java/com/binance/api/client/store/ExecutePairs.java
 
-    **Note: Refer visualization screenshot added along with README file.**
+   **Note: Refer visualization screenshot added along with README file.**
 
 
 
