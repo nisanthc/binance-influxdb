@@ -49,7 +49,7 @@ Using Grafana GUI
    2. Run the below java file to fetch the all BTC pairs info and store in the database
          /binance-influxdb/src/main/java/com/binance/api/client/store/ExecutePairs.java
 
-   **Note: Refer visualization screenshot added along with README file.**
+    **Note: Refer visualization screenshot added along with README file.**
 
 
 
