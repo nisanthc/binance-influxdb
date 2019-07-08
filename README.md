@@ -12,7 +12,7 @@ InfluxDB is a time series database designed to handle high write and query loads
    4. Run influxd (server)
    5. Run influx (client)
 
-   Note: InfluxDB would run under defalut port 8086 
+   Note: InfluxDB server runs with the port http://127.0.0.1:8086
 
 ### Grafana Tool Setup
 
@@ -20,6 +20,8 @@ Grafana is an open source visualization tool. It allows you to query, visualize,
 
    1. Download Grafana https://dl.grafana.com/oss/release/grafana-6.2.5.windows-amd64.zip
    2. Installation steps available in https://grafana.com/docs/installation/windows/
+    
+   Note: Assume if you change the port to 8888 in #2, open url http://127.0.0.1:8888 to verify.
 
 ### Integrating Grafana with InfluxDB
 
@@ -48,11 +50,14 @@ Using Grafana GUI
 ## Start Project
 
    1. Download or clone the project
-   2. Run maven pom file to build all dependencies. (mvn clean)
-   2. Run the below java file to fetch the all BTC pairs info and store in the database
-         /binance-influxdb/src/main/java/com/binance/api/client/store/ExecutePairs.java
+   2. Run the below jar file by giving pair either BTC or BNB as command line arguments.
+        java -jar target\binance-influxdb-1.0.0.jar BTC     
+   3. Goto influx client and run the below query to verify the database update
+         show measurements;
+   4. Open Grafana and check the real time visualization.
 
-   **Note: Refer visualization screenshot added along with README file.**
+
+   **Note: Refer visualization screenshot added inside docs folder.**
 
 
 
