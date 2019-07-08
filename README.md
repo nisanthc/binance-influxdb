@@ -1,6 +1,6 @@
 ## binance-influxdb-grafana
 
-   *This application is used to store the Order Updates into the InfluxDB. This code fetch all BTC pairs order updates and store it in Influx database. The stored data are visualized using Grafana tool.*
+   *This application is used to store the Order Updates into the InfluxDB. This code handles all BTC pairs order updates and store it in Influx database. The stored data are visualized using Grafana tool.*
    
 ### InfluxDB SetUP
 
@@ -40,7 +40,7 @@ Using Grafana GUI
       4. General: Give panel name
       5. Save the Dashboard
    3. Repeat the above step #2 by adding new panel in the same dashboard. And in the Queries section give the below query for ASKS
-       """ SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention".$BTCPAIRS WHERE ("category" = 'ASKS') AND $timeFilter """
+           """ SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention".$BTCPAIRS WHERE ("category" = 'ASKS') AND $timeFilter """
   
 ## Start Project
 
