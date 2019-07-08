@@ -68,7 +68,7 @@ Using Grafana GUI
    
    2. Run the below jar file by giving pair either BTC or BNB as command line argument
    
-           java -jar target\binance-influxdb-1.0.0.jar BTC  
+           java -jar binance-influxdb\target\binance-influxdb-1.0.0.jar BTC 
            
    3. Goto influx client and run the below query to verify the database update   
    
