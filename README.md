@@ -1,6 +1,6 @@
 ## Binance-InfluxDB-Grafana
 
-   *This application is used to store the Order Updates into the InfluxDB. This code handles all BTC pairs order updates and store it in Influx database. The stored data are visualized using Grafana tool.*
+   *This application is used to store the Order Updates into the InfluxDB. This code handles all BTC/BNB pairs order updates and store it in Influx database. The stored data are visualized using Grafana tool.*
    
 ### InfluxDB Setup
 
