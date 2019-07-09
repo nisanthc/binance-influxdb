@@ -14,7 +14,11 @@ InfluxDB is a time series database designed to handle high write and query loads
    
    4. Run influxd (server)
    
-   5. Run influx (client)
+   5. Run influx (client) and create database using below query
+   
+          create database "stock_order";
+          create retention policy "stock_retention" on "stock_order" duration 10d replication 1 default;
+          
 
    Note: InfluxDB server runs with the default port http://127.0.0.1:8086
 
@@ -39,10 +43,10 @@ Using Grafana GUI
       1. Go the Dashboard setting and select variable menu
       
       2. Create a new vaiable
-         Name : BTCPAIR
+         Name : PAIRS
          Type : Query
          DataSource : InfluxDB
-         Query : show measurements
+         Query : show tag values from orderbook with key = "symbol"
          
    3. Create a dashboard 
    
@@ -50,7 +54,7 @@ Using Grafana GUI
         
         2. Queries : Add Query for BIDS table
 
-          SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention".$BTCPAIRS WHERE ("category" = 'BIDS') AND $timeFilter 
+          SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention"."orderbook" WHERE ("category" = 'BIDS' and  "symbol" = '$PAIRS') AND $timeFilter
 
         3. Visualization: Format the table
         
@@ -60,7 +64,7 @@ Using Grafana GUI
         
    4. Repeat the above step #2 by adding new panel in the same dashboard. And in the Queries section add the below query for ASKS
           
-          SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention".$BTCPAIRS WHERE ("category" = 'ASKS') AND $timeFilter 
+          SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention"."orderbook" WHERE ("category" = 'ASKS' and  "symbol" = '$PAIRS') AND $timeFilter
   
 ## Start Project
 
