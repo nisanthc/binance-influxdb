@@ -43,10 +43,9 @@ Using Grafana GUI
       1. Go the Dashboard setting and select variable menu
       
       2. Create a new vaiable
-      
-           Name : PAIRS
-           Type : Query
-           DataSource : InfluxDB
+           Name : PAIRS,
+           Type : Query,
+           DataSource : InfluxDB,
            Query : show tag values from orderbook with key = "symbol"
          
    3. Create a dashboard 
