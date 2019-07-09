@@ -10,7 +10,7 @@ InfluxDB is a time series database designed to handle high write and query loads
    
    2. unzip influxdb-1.7.7_windows_amd64.zip
    
-   3. Go into the folder.
+   3. Go into the folder
    
    4. Run influxd (server)
    
@@ -48,7 +48,7 @@ Grafana GUI
    
         1. Go the Dashboard setting and select variable menu
 
-        2. Create a new vaiable with below parameter
+        2. Create a new vaiable with below parameters
       
                Name       : PAIRS
                Type       : Query
