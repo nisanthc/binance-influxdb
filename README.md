@@ -30,7 +30,7 @@ Grafana is an open source visualization tool. It allows you to query, visualize,
    
    2. Installation steps available in https://grafana.com/docs/installation/windows/ (Change the port to 8888)
     
-   Note: Open URL http://127.0.0.1:8888 to check the grafana. 
+   Note: Open URL http://127.0.0.1:8888 to check the grafana 
 
 ### Integrating Grafana with InfluxDB
 
@@ -43,10 +43,11 @@ Using Grafana GUI
       1. Go the Dashboard setting and select variable menu
       
       2. Create a new vaiable
-         Name : PAIRS
-         Type : Query
-         DataSource : InfluxDB
-         Query : show tag values from orderbook with key = "symbol"
+      
+           Name : PAIRS
+           Type : Query
+           DataSource : InfluxDB
+           Query : show tag values from orderbook with key = "symbol"
          
    3. Create a dashboard 
    
