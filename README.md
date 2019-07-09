@@ -40,20 +40,20 @@ Grafana GUI
 
    2. Goto Home Dashboard. Click "create your first data source" and select "InfluxDB". Give necessary information to configure.
    
-             Name     : InfluxDB
-             Url      : http://127.0.0.1:8086
-             Database : stock_order
-      
+               Name     : InfluxDB
+               Url      : http://127.0.0.1:8086
+               Database : stock_order
+
    3. Dynamic dashboard has been created using variable
    
         1. Go the Dashboard setting and select variable menu
 
         2. Create a new vaiable with below parameter
       
-             Name       : PAIRS
-             Type       : Query
-             DataSource : InfluxDB,
-             Query      : show tag values from orderbook with key = "symbol"
+               Name       : PAIRS
+               Type       : Query
+               DataSource : InfluxDB,
+               Query      : show tag values from orderbook with key = "symbol"
 
    4. Create a dashboard 
    
@@ -61,7 +61,7 @@ Grafana GUI
         
         2. Select "Add Query" and paste the below BIDS query under toogle edit mode
         
-               SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention"."orderbook" WHERE ("category" = 'BIDS'                  and  "symbol" = '$PAIRS') AND $timeFilter
+               SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention"."orderbook" WHERE ("category" = 'BIDS'    and  "symbol" = '$PAIRS') AND $timeFilter
 
         3. Select Visualization Icon and choose table format from drop down menu. Format the table as your choice by providing column               style 
         
@@ -71,7 +71,7 @@ Grafana GUI
         
    5. Open the above dashboard, repeat the above step 4.2, 4.3, 4.4, 4.5 by clicking "add panel" icon in top menu. Paste the below ASKS       query 
           
-          SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention"."orderbook" WHERE ("category" = 'ASKS' and                "symbol" = '$PAIRS') AND $timeFilter
+               SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention"."orderbook" WHERE ("category" = 'ASKS' and  "symbol" = '$PAIRS') AND $timeFilter
   
 ## Start Project
 
