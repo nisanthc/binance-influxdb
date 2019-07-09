@@ -26,9 +26,10 @@ public class ExecutePairs {
 					dco.start();
 		    	}
 	   	    });
-//			List<String> pairs = Arrays.asList("ETCBTC", "BNBBTC", "LINKBTC", "ERDBTC", "XRPBTC", "PPTBTC", "CVCBTC");
-//			for (String pair : pairs) {
-//			DepthCacheOrderBook dco = new DepthCacheOrderBook(pair);
+//			String pair = "BTC";
+//			List<String> symbols = Arrays.asList("BNBBTC","PPTBTC","BNBBTC", "LINKBTC", "ERDBTC", "XRPBTC", "PPTBTC", "CVCBTC");
+//			for (String symbol : symbols) {
+//			DepthCacheOrderBook dco = new DepthCacheOrderBook(pair, symbol);
 //				dco.start();
 //			 }
 		}

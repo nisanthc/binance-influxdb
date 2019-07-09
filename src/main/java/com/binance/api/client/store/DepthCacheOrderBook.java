@@ -130,10 +130,13 @@ public class DepthCacheOrderBook extends Thread {
         updateOrderBook(getAsks(), newEvent.getAsks());
         updateOrderBook(getBids(), newEvent.getBids());
         saveDepthCache();
-
-      }
+       }
     };
 
+    
+    
+    
+    
     final Consumer<DepthEvent> drainPending = newEvent -> {
       pendingDeltas.add(newEvent);
 
@@ -200,37 +203,33 @@ public class DepthCacheOrderBook extends Thread {
   private void saveDepthCache() {
 
 	    InfluxDB influxDB = InfluxDBFactory.connect("http://127.0.0.1:8086");
-	    influxDB.createDatabase("stock_order");
-	    influxDB.createRetentionPolicy("stock_retention","stock_order", "5d", 1, true);
 	    BatchPoints batchpoint = BatchPoints.database("stock_order").retentionPolicy("stock_retention").build();
+	    int uniq = 1;
 	    
-	    getAsks().forEach((key,value) -> { 
-	    	   	
-	    	Point point = Point.measurement(symbol).time(System.currentTimeMillis(),TimeUnit.MILLISECONDS)
-					.tag("category","ASKS").tag("eventTime", String.valueOf(eventTime)).addField("price",key)
-					.addField("quantity", value).build();
-			
+	    for (Map.Entry<BigDecimal, BigDecimal> entry : getAsks().entrySet()) {
 	    	
-	    	batchpoint.point(point);
-	    	influxDB.write(batchpoint);
-	    });
-	    
-	    getBids().forEach((key,value) -> { 
-		   	
-	    	Point point = Point.measurement(symbol).time(System.currentTimeMillis(),TimeUnit.MILLISECONDS)
-					.tag("category","BIDS").tag("eventTime", String.valueOf(eventTime)).addField("price",key)
-					.addField("quantity", value).build();
+	    	Point point = Point.measurement("orderbook").time(eventTime, TimeUnit.MILLISECONDS)
+	    			.tag("symbol",symbol).tag("category","ASKS").tag("uniq", String.valueOf(uniq))
+					.addField("price",entry.getKey()).addField("quantity", entry.getValue()).build();
 			
-	    	
 	    	batchpoint.point(point);
-	    	influxDB.write(batchpoint);
-	    });
+	        uniq ++;
+	    }
 	    
+	    for (Map.Entry<BigDecimal, BigDecimal> entry : getBids().entrySet()) {
+	    	
+	    	Point point = Point.measurement("orderbook").time(eventTime,TimeUnit.MILLISECONDS)
+	    			.tag("symbol",symbol).tag("category","BIDS").tag("uniq", String.valueOf(uniq))
+					.addField("price",entry.getKey()).addField("quantity", entry.getValue()).build();
+			
+	    	batchpoint.point(point);
+	        uniq ++;
+	    }
+	    influxDB.write(batchpoint);
 	    influxDB.close();
-	  
   }
   
-
+   
   private final class WsCallback implements BinanceApiCallback<DepthEvent> {
 
     private final AtomicReference<Consumer<DepthEvent>> handler = new AtomicReference<>();
