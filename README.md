@@ -57,19 +57,19 @@ Grafana GUI
 
    4. Create a dashboard 
    
-        1. Goto Home Dashboard and click "create your first dashboard" 
+        a. Goto Home Dashboard and click "create your first dashboard" 
         
-        2. Select "Add Query" and paste the below BIDS query under toogle edit mode
+        b. Select "Add Query" and paste the below BIDS query under toogle edit mode
         
                SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention"."orderbook" WHERE ("category" = 'BIDS'    and  "symbol" = '$PAIRS') AND $timeFilter
 
-        3. Select Visualization Icon and choose table format from drop down menu. Format the table as your choice by providing column               style 
+        c. Select Visualization Icon and choose table format from drop down menu. Format the table as your choice by providing column               style 
         
-        4. select setting icon and provide title name
+        d. select setting icon and provide title name
         
-        5. Save the Dashboard
+        e. Save the Dashboard
         
-   5. Open the above dashboard, repeat the above step 4.2, 4.3, 4.4, 4.5 by clicking "add panel" icon in top menu. Paste the below ASKS       query 
+   5. Open the above dashboard, repeat the above step 4.a, 4.b, 4.c, 4.d by clicking "add panel" icon in top menu. Paste the below ASKS       query 
           
                SELECT "price", "quantity", "price"*"quantity"  as Total FROM "stock_retention"."orderbook" WHERE ("category" = 'ASKS' and  "symbol" = '$PAIRS') AND $timeFilter
   
